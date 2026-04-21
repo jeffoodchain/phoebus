@@ -1,0 +1,14 @@
+node_modules
+web-ext-artifacts
+package.json
+package-lock.json
+.webextignore
+.gitignore
+.github
+DECISIONS.md
+PUBLISH.md
+PRIVACY.md
+LICENSE
+README.md
+*.md
+.DS_Store

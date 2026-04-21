@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Phoebus — Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Phoebus</h1>
+      <p class="subtitle">Double-click any word to translate it in context.</p>
+    </header>
+
+    <section class="card">
+      <h2>Google Gemini API key</h2>
+      <p class="hint">Get a free key at <code>aistudio.google.com/apikey</code>. Stored in Firefox sync storage, sent only to <code>generativelanguage.googleapis.com</code>.</p>
+      <label for="apiKey" class="sr-only">API key</label>
+      <div class="row">
+        <input type="password" id="apiKey" placeholder="AIza..." autocomplete="off" spellcheck="false" />
+        <button type="button" id="toggleKey" class="ghost" aria-label="Show or hide key">Show</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Languages</h2>
+      <div class="grid">
+        <div>
+          <label for="sourceLanguage">From</label>
+          <input type="text" id="sourceLanguage" list="langs" placeholder="English" />
+        </div>
+        <div>
+          <label for="targetLanguage">To</label>
+          <input type="text" id="targetLanguage" list="langs" placeholder="Traditional Chinese" />
+        </div>
+      </div>
+      <datalist id="langs">
+        <option value="English"></option>
+        <option value="Traditional Chinese"></option>
+        <option value="Simplified Chinese"></option>
+        <option value="Japanese"></option>
+        <option value="Korean"></option>
+        <option value="Spanish"></option>
+        <option value="French"></option>
+        <option value="German"></option>
+        <option value="Italian"></option>
+        <option value="Portuguese"></option>
+        <option value="Russian"></option>
+        <option value="Arabic"></option>
+        <option value="Vietnamese"></option>
+        <option value="Thai"></option>
+      </datalist>
+      <p class="hint">Type any language name — Gemini understands freeform names.</p>
+    </section>
+
+    <section class="card">
+      <h2>Model</h2>
+      <label for="model" class="sr-only">Model</label>
+      <select id="model">
+        <option value="gemini-2.5-flash">Gemini 2.5 Flash — fast + cheap (default)</option>
+        <option value="gemini-2.5-flash-lite">Gemini 2.5 Flash Lite — fastest</option>
+        <option value="gemini-2.5-pro">Gemini 2.5 Pro — best quality</option>
+      </select>
+      <p class="hint">Flash handles single-word lookup well and is nearly free. Pro gives the best nuance for tricky polysemous words.</p>
+    </section>
+
+    <div class="actions">
+      <button type="button" id="save" class="primary">Save</button>
+      <span id="status" class="status" aria-live="polite"></span>
+    </div>
+  </main>
+
+  <script src="options.js"></script>
+</body>
+</html>

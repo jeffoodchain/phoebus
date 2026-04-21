@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Phoebus",
+  "version": "0.1.0",
+  "description": "Double-click any word for a context-aware translation from Google Gemini. Highlight phrases with a hand-drawn marker that sticks. Bring your own API key.",
+  "author": "jeffoodchain",
+  "homepage_url": "https://github.com/jeffoodchain/phoebus",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "phoebus@jeffoodchain.dev",
+      "strict_min_version": "115.0"
+    }
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://generativelanguage.googleapis.com/*"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  }
+}

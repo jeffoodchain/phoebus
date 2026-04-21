@@ -1,0 +1,15 @@
+{
+  "name": "phoebus",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Double-click any word for a context-aware translation from Google Gemini. Highlight phrases with a hand-drawn marker that sticks.",
+  "scripts": {
+    "lint": "web-ext lint --source-dir=.",
+    "build": "web-ext build --source-dir=. --artifacts-dir=web-ext-artifacts --overwrite-dest",
+    "run": "web-ext run --source-dir=. --firefox=firefox",
+    "sign": "web-ext sign --source-dir=. --artifacts-dir=web-ext-artifacts --channel=listed"
+  },
+  "devDependencies": {
+    "web-ext": "^8.3.0"
+  }
+}

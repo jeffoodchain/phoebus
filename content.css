@@ -1,0 +1,358 @@
+/* ===== Tooltip ===== */
+.ctx-translator-tooltip {
+  position: absolute;
+  z-index: 2147483647;
+  max-width: 320px;
+  min-width: 180px;
+  padding: 12px 32px 12px 14px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 120ms ease-out, transform 120ms ease-out;
+  pointer-events: auto;
+  user-select: text;
+}
+
+.ctx-translator-tooltip.ctx-phrase-tooltip {
+  max-width: 440px;
+}
+
+.ctx-translator-tooltip.ctx-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ctx-translator-tooltip.ctx-dragging {
+  cursor: grabbing !important;
+  transition: none;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22), 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.ctx-translator-tooltip .ctx-close-btn,
+.ctx-selection-toolbar .ctx-tb-close,
+.ctx-highlight-controls .ctx-hl-close {
+  color: inherit;
+  opacity: 0.55;
+  transition: opacity 120ms ease, background 100ms ease;
+}
+
+.ctx-translator-tooltip .ctx-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ctx-translator-tooltip .ctx-close-btn:hover,
+.ctx-selection-toolbar .ctx-tb-close:hover,
+.ctx-highlight-controls .ctx-hl-close:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.ctx-selection-toolbar .ctx-tb-close,
+.ctx-highlight-controls .ctx-hl-close {
+  padding: 6px 8px;
+}
+
+.ctx-selection-toolbar .ctx-tb-close:hover,
+.ctx-highlight-controls .ctx-hl-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ctx-selection-toolbar.ctx-dragging,
+.ctx-highlight-controls.ctx-dragging {
+  cursor: grabbing !important;
+  transition: none;
+}
+
+.ctx-translator-tooltip .ctx-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ctx-translator-tooltip .ctx-word {
+  font-weight: 600;
+  font-size: 15px;
+  color: #111;
+  word-break: break-word;
+}
+
+.ctx-translator-tooltip .ctx-word.ctx-source {
+  font-weight: 500;
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ctx-translator-tooltip .ctx-pos {
+  margin-left: auto;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #888;
+  font-weight: 500;
+}
+
+.ctx-translator-tooltip .ctx-translation {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b5cff;
+  margin: 2px 0 6px;
+  word-break: break-word;
+}
+
+.ctx-translator-tooltip .ctx-translation-phrase {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.ctx-translator-tooltip .ctx-meaning {
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.ctx-translator-tooltip .ctx-example {
+  font-style: italic;
+  color: #555;
+  padding-top: 6px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.ctx-translator-tooltip .ctx-muted { color: #888; }
+.ctx-translator-tooltip .ctx-error { color: #c0392b; }
+
+.ctx-translator-tooltip .ctx-spinner {
+  margin-left: auto;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-top-color: #0b5cff;
+  border-radius: 50%;
+  animation: ctx-spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes ctx-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Selection toolbar ===== */
+.ctx-selection-toolbar {
+  position: absolute;
+  z-index: 2147483647;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 4px;
+  border-radius: 10px;
+  background: #1a1b1e;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translateY(3px) scale(0.96);
+  transition: opacity 130ms ease-out, transform 130ms ease-out;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.ctx-selection-toolbar.ctx-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.ctx-selection-toolbar .ctx-tb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+  transition: background 100ms ease;
+}
+
+.ctx-selection-toolbar .ctx-tb-btn.ctx-icon-only,
+.ctx-highlight-controls .ctx-hl-btn.ctx-icon-only {
+  padding: 7px 8px;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.ctx-selection-toolbar .ctx-tb-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ctx-selection-toolbar .ctx-tb-btn:active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.ctx-selection-toolbar .ctx-tb-btn svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.ctx-selection-toolbar .ctx-tb-sep {
+  width: 1px;
+  margin: 4px 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== Hand-drawn highlight =====
+   Slanted polygon — a marker swipe that tilts upward from bottom-left to
+   top-right, shorter than the text line. */
+.ctx-highlight {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 200 30'><polygon points='1.5,12 198.5,4 198.5,21 1.5,26' fill='%23ffd94a' fill-opacity='0.68'/><polygon points='1.5,12 198.5,4 198.5,8 1.5,15' fill='%23fff1a0' fill-opacity='0.35'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 96%;
+  background-position: 0 60%;
+  padding: 0 0.15em;
+  margin: 0 -0.04em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  cursor: pointer;
+  transition: background-size 140ms ease;
+}
+
+.ctx-highlight:hover {
+  background-size: 100% 118%;
+}
+
+/* ===== Highlight controls popover ===== */
+.ctx-highlight-controls {
+  position: absolute;
+  z-index: 2147483647;
+  display: flex;
+  align-items: stretch;
+  padding: 4px;
+  border-radius: 10px;
+  background: #1a1b1e;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translateY(3px) scale(0.96);
+  transition: opacity 130ms ease-out, transform 130ms ease-out;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.ctx-highlight-controls.ctx-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.ctx-highlight-controls .ctx-hl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+  transition: background 100ms ease;
+}
+
+.ctx-highlight-controls .ctx-hl-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ctx-highlight-controls .ctx-hl-btn.ctx-danger:hover {
+  background: rgba(255, 95, 95, 0.18);
+  color: #ff8f80;
+}
+
+.ctx-highlight-controls .ctx-hl-btn svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.ctx-highlight-controls .ctx-hl-sep {
+  width: 1px;
+  margin: 4px 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== Dark mode ===== */
+@media (prefers-color-scheme: dark) {
+  .ctx-translator-tooltip {
+    background: #1e1f22;
+    color: #e8e8ea;
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+  .ctx-translator-tooltip .ctx-word { color: #fafafa; }
+  .ctx-translator-tooltip .ctx-word.ctx-source { color: #9a9aa2; }
+  .ctx-translator-tooltip .ctx-pos { color: #9a9aa2; }
+  .ctx-translator-tooltip .ctx-translation { color: #6ea8ff; }
+  .ctx-translator-tooltip .ctx-translation-phrase { color: #fafafa; }
+  .ctx-translator-tooltip .ctx-meaning { color: #d6d6db; }
+  .ctx-translator-tooltip .ctx-example {
+    color: #a9a9b1;
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+  .ctx-translator-tooltip .ctx-muted { color: #9a9aa2; }
+  .ctx-translator-tooltip .ctx-error { color: #ff7a6a; }
+  .ctx-translator-tooltip .ctx-spinner {
+    border-color: rgba(255, 255, 255, 0.15);
+    border-top-color: #6ea8ff;
+  }
+
+  .ctx-selection-toolbar {
+    background: #2b2c30;
+    color: #f0f0f2;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.45);
+  }
+
+  .ctx-highlight {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 200 30'><polygon points='1.5,12 198.5,4 198.5,21 1.5,26' fill='%23ffb84a' fill-opacity='0.55'/><polygon points='1.5,12 198.5,4 198.5,8 1.5,15' fill='%23ffd060' fill-opacity='0.25'/></svg>");
+    color: inherit;
+  }
+
+  .ctx-highlight-controls {
+    background: #2b2c30;
+    color: #f0f0f2;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.45);
+  }
+}
