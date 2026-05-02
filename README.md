@@ -31,35 +31,23 @@ in your target language.
 
 ### Phrase / sentence translation — select & click
 
-Drag-select any phrase. A small floating toolbar appears above the
-selection:
-
-<p align="center">
-  <img src="docs/screenshots/phrase-toolbar.png" alt="Selection toolbar with Translate and Highlight actions" width="320">
-</p>
-
-Click **Translate** for a natural full-sentence translation with
+Drag-select any phrase and click **Translate** on the floating toolbar
+that appears. Phoebus returns a natural full-sentence translation with
 optional notes on idioms, slang, or tricky references.
 
 <p align="center">
-  <img src="docs/screenshots/phrase-translation.png" alt="Full-sentence translation tooltip" width="520">
+  <img src="docs/screenshots/phrase-translation.png" alt="Full-sentence translation tooltip" width="640">
 </p>
 
 ### Hand-drawn highlighter that sticks
 
-Click **Highlight** to wrap the selection in a slanted marker stroke —
-the kind a real pen makes, not a rectangle. Highlights are saved to
-local browser storage per URL, so they **survive page reloads and
-browser restarts**.
+Click **Highlight** instead, and the selection gets wrapped in a slanted
+marker stroke — the kind a real pen makes, not a rectangle. Highlights
+are saved to local browser storage per URL, so they **survive page
+reloads**. Click an existing highlight to adjust its range or remove it.
 
 <p align="center">
-  <img src="docs/screenshots/highlight.png" alt="Hand-drawn yellow marker over a paragraph" width="620">
-</p>
-
-Click an existing highlight to **Adjust** the range or **Remove** it:
-
-<p align="center">
-  <img src="docs/screenshots/highlight-controls.png" alt="Highlight edit controls popover" width="260">
+  <img src="docs/screenshots/highlight.png" alt="Hand-drawn yellow marker over a paragraph" width="640">
 </p>
 
 ### Draggable, dismissable UI
